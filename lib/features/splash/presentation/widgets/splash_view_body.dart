@@ -14,8 +14,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     executeNavigation();
+    super.initState();
+
   }
 
   void executeNavigation() {
