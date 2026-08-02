@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 
-
 class SocialLoginButton extends StatelessWidget {
-  const SocialLoginButton(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.onPressed});
+  const SocialLoginButton({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.onPressed,
+  });
 
   final String image;
   final String title;
   final VoidCallback onPressed;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

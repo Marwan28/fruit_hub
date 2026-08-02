@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
@@ -28,13 +27,13 @@ class LoginViewBody extends StatelessWidget {
                 keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(height: 16),
-              CustomTextFormField(
+              const CustomTextFormField(
+                suffixIcon: Icon(
+                  Icons.remove_red_eye,
+                  color: Color(0xffC9CECF),
+                ),
                 hintText: 'كلمة المرور',
                 keyboardType: TextInputType.visiblePassword,
-                suffixIcon: const Icon(
-                  Icons.remove_red_eye,
-                  color: Color(0xFFC9CECF),
-                ),
               ),
               SizedBox(height: 16),
               Row(
@@ -61,18 +60,14 @@ class LoginViewBody extends StatelessWidget {
                 title: 'تسجيل بواسطة جوجل',
               ),
               const SizedBox(height: 16),
-              Platform.isIOS
-                  ? Column(
-                      children: [
-                        SocialLoginButton(
-                          onPressed: () {},
-                          image: Assets.imagesAppleIcon,
-                          title: 'تسجيل بواسطة أبل',
-                        ),
-                        const SizedBox(height: 16),
-                      ],
-                    )
-                  : const SizedBox(),
+              SocialLoginButton(
+                onPressed: () {},
+                image: Assets.imagesAppleIcon,
+                title: 'تسجيل بواسطة أبل',
+              ),
+              const SizedBox(
+                height: 16,
+              ),
               SocialLoginButton(
                 onPressed: () {},
                 image: Assets.imagesFacebookIcon,
