@@ -40,6 +40,7 @@ dependencies:
   flutter_svg: ^2.3.0
   dots_indicator: ^4.0.1
   shared_preferences: ^2.5.5
+  firebase_core: ^4.13.0
 
 dev_dependencies:
   flutter_test:
