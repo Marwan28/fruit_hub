@@ -26,7 +26,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       var userEntity = UserEntity(name: name, email: email, uId: user.uid);
-      await addUserData(user: userEntity);
+      // await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       log(
@@ -42,12 +42,37 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
-    String email,
-    String password,
-  ) {
-    // TODO: implement signInWithEmailAndPassword
-    throw UnimplementedError();
+  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  })async {
+    try {
+      var user = await firebaseAuthService.signInWithEmailAndPassword(
+          email: email, password: password);
+      // var userEntity = await getUserData(uid: user.uid);
+      // await saveUserData(user: userEntity);
+      // return right(
+      //   userEntity,
+      // );
+      return right(
+        UserEntity(
+          name: user.displayName ?? '',
+          email: user.email ?? '',
+          uId: user.uid,
+        ),
+      );
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log(
+        'Exception in AuthRepoImpl.signInWithEmailAndPassword: ${e.toString()}',
+      );
+      return left(
+        ServerFailure(
+          'حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+        ),
+      );
+    }
   }
 
   @override
