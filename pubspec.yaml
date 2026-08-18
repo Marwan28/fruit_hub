@@ -47,6 +47,10 @@ dependencies:
   flutter_bloc: ^9.1.1
   get_it: ^9.2.1
   modal_progress_hud_nsn: ^0.5.1
+  google_sign_in: ^7.2.0
+  flutter_facebook_auth: ^7.2.0
+  sign_in_with_apple: ^8.1.0
+  crypto: ^3.0.7
 
 dev_dependencies:
   flutter_test:
