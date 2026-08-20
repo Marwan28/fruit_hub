@@ -115,12 +115,19 @@ class FirebaseAuthService {
       facebookAuthCredential!,
     )).user!;
   }
+
   Future<User> signInWithApple() async {
     final appleProvider = AppleAuthProvider();
     if (kIsWeb) {
       return (await FirebaseAuth.instance.signInWithPopup(appleProvider)).user!;
     } else {
-      return (await FirebaseAuth.instance.signInWithProvider(appleProvider)).user!;
+      return (await FirebaseAuth.instance.signInWithProvider(
+        appleProvider,
+      )).user!;
     }
+  }
+
+  Future<void> deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
   }
 }
